@@ -1,0 +1,19 @@
+.titleFont {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.largeFont {
+    font-size: 36px;
+}
+
+.mediumFont {
+    font-size: 16px;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
