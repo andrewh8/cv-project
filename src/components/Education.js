@@ -1,71 +1,51 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import EducationDisplay from './EducationDisplay';
 
-class Education extends Component {
-  constructor() {
-    super();
+const Education = () => {
+  const [school, setSchool] = useState('School');
+  const [degree, setDegree] = useState('Degree');
+  const [graduationDate, setGraduationDate] = useState('Graduation Date');
+  const [displayIsHtml, setDisplayIsHtml] = useState(true);
+  const [button, setButton] = useState('Edit');
 
-    this.state = {
-      school: 'School',
-      degree: 'Degree',
-      graduationDate: 'Graduation Date',
-      displayIsHtml: true,
-      button: 'Edit',
-    };
-  }
+  const schoolChange = (e) => {
+    setSchool(e.target.value);
+  };
 
-  editButton = () => {
-    this.setState({
-      button: 'Submit',
-      displayIsHtml: false,
-    })
-  }
+  const degreeChange = (e) => {
+    setDegree(e.target.value);
+  };
 
-  submitButton = (e) => {
+  const graduationDateChange = (e) => {
+    setGraduationDate(e.target.value);
+  };
+
+  const editButton = () => {
+    setButton('Submit');
+    setDisplayIsHtml(false);
+  };
+  
+  const submitButton = (e) => {
     e.preventDefault();
-    this.setState({
-      button: 'Edit',
-      displayIsHtml: true,
-    })
-  }
+    setButton('Edit');
+    setDisplayIsHtml(true);
+  };
 
-  schoolChange = (e) => {
-    this.setState({
-      school: e.target.value,
-    })
-  }
-
-  degreeChange = (e) => {
-    this.setState({
-      degree: e.target.value,
-    })
-  }
-
-  graduationDateChange = (e) => {
-    this.setState({
-      graduationDate: e.target.value,
-    })
-  }
-
-  render() {
-    const { school, degree, graduationDate, displayIsHtml, button } = this.state;
-
-    return (
-      <div>
-        <EducationDisplay 
-          school={school}
-          degree={degree}
-          graduationDate={graduationDate}
-          displayIsHtml={displayIsHtml}
-          button={button}
-          editButton={this.editButton}
-          submitButton={this.submitButton}
-          schoolChange={this.schoolChange}
-          degreeChange={this.degreeChange}
-          graduationDateChange={this.graduationDateChange}/>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <EducationDisplay 
+        school={school}
+        degree={degree}
+        graduationDate={graduationDate}
+        displayIsHtml={displayIsHtml}
+        button={button}
+        editButton={editButton}
+        submitButton={submitButton}
+        schoolChange={schoolChange}
+        degreeChange={degreeChange}
+        graduationDateChange={graduationDateChange}/>
+    </div>
+  );
+};
 
 export default Education;

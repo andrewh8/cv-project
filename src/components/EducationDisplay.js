@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/componentStyle.css';
 
-class EducationDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const EducationDisplay = (props) => {
 
     const { school, 
             degree,
@@ -18,7 +13,7 @@ class EducationDisplay extends Component {
             schoolChange, 
             degreeChange,
             graduationDateChange 
-        } = this.props;
+            } = props;
 
     return displayIsHtml ? (
         <div className='component'>
@@ -28,7 +23,7 @@ class EducationDisplay extends Component {
             <div>{graduationDate}</div>
             <button onClick={editButton}>{button}</button>
         </div>
-    ) : (
+        ) : (
         <form className='component' onSubmit={submitButton}>
             <label htmlFor="schoolInput">School: </label>
             <input 
@@ -50,8 +45,7 @@ class EducationDisplay extends Component {
                 id="graduationDateInput"></input>
             <button type='submit'>{button}</button>
         </form>
-    )
-  }
-}
+        );
+};
 
 export default EducationDisplay;

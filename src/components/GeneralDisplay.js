@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/componentStyle.css';
 
-class GeneralDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const GeneralDisplay = (props) => {
 
     const { name, 
             email,
@@ -18,7 +13,7 @@ class GeneralDisplay extends Component {
             nameChange, 
             emailChange,
             phoneChange 
-        } = this.props;
+        } = props;
 
     return displayIsHtml ? (
         <div className='component'>
@@ -27,7 +22,7 @@ class GeneralDisplay extends Component {
             <div>{phone}</div>
             <button onClick={editButton}>{button}</button>
         </div>
-    ) : (
+        ) : (
         <form className='component' onSubmit={submitButton}>
             <label htmlFor="nameInput">Name: </label>
             <input 
@@ -49,8 +44,7 @@ class GeneralDisplay extends Component {
                 id="phoneInput"></input>
             <button type='submit'>{button}</button>
         </form>
-    )
-  }
-}
+        );
+};
 
 export default GeneralDisplay;

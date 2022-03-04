@@ -1,71 +1,52 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import GeneralDisplay from './GeneralDisplay';
 
-class General extends Component {
-  constructor() {
-    super();
+const General = () => {
 
-    this.state = {
-      name: 'Name',
-      email: 'Email',
-      phone: 'Phone Number',
-      displayIsHtml: true,
-      button: 'Edit',
-    };
-  }
+  const [name, setName] = useState('Name'); 
+  const [email, setEmail] = useState('Email'); 
+  const [phone, setPhone] = useState('Phone'); 
+  const [displayIsHtml, setDisplayIsHtml] = useState(true); 
+  const [button, setButton] = useState('Edit'); 
 
-  editButton = () => {
-    this.setState({
-      button: 'Submit',
-      displayIsHtml: false,
-    })
-  }
+  const nameChange = (e) => {
+    setName(e.target.value);
+  };
 
-  submitButton = (e) => {
+  const emailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const phoneChange = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const editButton = () => {
+    setButton('Submit');
+    setDisplayIsHtml(false);
+  };
+
+  const submitButton = (e) => {
     e.preventDefault();
-    this.setState({
-      button: 'Edit',
-      displayIsHtml: true,
-    })
-  }
+    setButton('Edit');
+    setDisplayIsHtml(true);
+  };
 
-  nameChange = (e) => {
-    this.setState({
-      name: e.target.value,
-    })
-  }
-
-  emailChange = (e) => {
-    this.setState({
-      email: e.target.value,
-    })
-  }
-
-  phoneChange = (e) => {
-    this.setState({
-      phone: e.target.value,
-    })
-  }
-
-  render() {
-    const { name, email, phone, displayIsHtml, button } = this.state;
-
-    return (
-      <div>
-        <GeneralDisplay 
-          name={name}
-          email={email}
-          phone={phone}
-          displayIsHtml={displayIsHtml}
-          button={button}
-          editButton={this.editButton}
-          submitButton={this.submitButton}
-          nameChange={this.nameChange}
-          emailChange={this.emailChange}
-          phoneChange={this.phoneChange}/>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <GeneralDisplay 
+        name={name}
+        email={email}
+        phone={phone}
+        displayIsHtml={displayIsHtml}
+        button={button}
+        editButton={editButton}
+        submitButton={submitButton}
+        nameChange={nameChange}
+        emailChange={emailChange}
+        phoneChange={phoneChange}/>
+    </div>
+  );
+};
 
 export default General;
